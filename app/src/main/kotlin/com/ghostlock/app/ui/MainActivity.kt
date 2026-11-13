@@ -6,6 +6,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.DocumentsContract
+import android.os.Build
 import android.view.WindowInsetsController
 import android.view.WindowManager
 import android.widget.Toast
@@ -134,6 +135,7 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun setupSystemBars() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) return
         val controller = window.decorView.windowInsetsController ?: return
         val lightStatus = if (resources.getBoolean(R.bool.window_light_status_bar)) {
             WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
